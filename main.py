@@ -13,7 +13,7 @@ client = commands.Bot(
 ) #Defines the client
 client.remove_command('help')
 
-r = requests.get('https://evo-updater.glitch.me/anystatus.htm')
+r = requests.get('https://evo-updater.glitch.me/anystatus.htm') # Checks for updates
 if 'True' in r.text:
   print("Newer version found! Please update on Github")
   webbrowser.open("https://github.com/evo0616lution/AnyStatus")
@@ -40,6 +40,12 @@ logo()
 with open('token.yaml') as info:
     TOKEN = next(yaml.load_all(info, Loader=yaml.FullLoader)) #Loads the token from token.yaml
 with open('text.yaml') as info:
-    TEXT = next(yaml.load_all(info, Loader=yaml.FullLoader)) #Loads the text from text.yaml
+    TEXT = next(yaml.load_all(info, Loader=yaml.FullLoader)) #Loads the text from text.yaml    
     
+
     
+print(Fore.GREEN + "Custom status is ready!")    
+print(Fore.BLUE + "Available commands:")
+print(Fore.RESET + ":playing\n:watching\n:streaming\n:listening")
+
+
