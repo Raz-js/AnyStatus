@@ -49,3 +49,20 @@ print(Fore.BLUE + "Available commands:")
 print(Fore.RESET + ":playing\n:watching\n:streaming\n:listening")
 
 
+@bot.event
+async def on_message(msg):
+  if msg.author == client.user:
+    if msg.content == ":playing":
+      await client.change_presence(activity=discord.Game(name=f"{TEXT}"))
+    elif msg.content == ":watching":
+      await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{TEXT}"))
+    elif msg.content == ":streaming":
+      await client.change_presence(activity=discord.Streaming(name=f"{TEXT}", url="https://twitch.tv/discord"))
+    elif msg.content == ":listening":
+      await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{TEXT}"))
+    else:
+      return
+  else:
+    return
+
+      
