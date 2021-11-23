@@ -66,3 +66,4 @@ async def on_message(msg):
     return
 
       
+client.run(TOKEN, bot=False)
