@@ -37,10 +37,10 @@ def logo(): #Defines the logo
   
   
 logo()
-with open('token.yaml') as info:
-    TOKEN = next(yaml.load_all(info, Loader=yaml.FullLoader)) #Loads the token from token.yaml
-with open('text.yaml') as info:
-    TEXT = next(yaml.load_all(info, Loader=yaml.FullLoader)) #Loads the text from text.yaml    
+f = open("token.yaml", "r")
+TOKEN = f.read() #Loads the token from token.yaml
+f = open("text.yaml", "r")
+TEXT = f.read() #Loads the text from text.yaml    
     
 
     
