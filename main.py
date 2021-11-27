@@ -1,5 +1,4 @@
 #Import additional packages
-import pyyaml
 import requests
 from time import sleep
 import webbrowser
