@@ -6,3 +6,4 @@ Next,  open a new terminal in the current folder and execute the following comma
 
     pip install -r requirements.txt
  Then open main.py and your custom status is ready :)   
+⚠️ This code may contain some errors. Make pull requests! ⚠️
