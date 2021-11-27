@@ -48,7 +48,7 @@ print(Fore.BLUE + "Available commands:")
 print(Fore.RESET + ":playing\n:watching\n:streaming\n:listening")
 
 
-@bot.event
+@client.event
 async def on_message(msg):
   if msg.author == client.user:
     if msg.content == ":playing":
