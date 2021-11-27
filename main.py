@@ -15,7 +15,7 @@ client.remove_command('help')
 r = requests.get('https://evo-updater.glitch.me/anystatus.htm') # Checks for updates
 if "1.3" not in r.text:
   print("Newer version found! Please update on Github")
-  webbrowser.open("https://github.com/evo0616lution/AnyStatus")
+  webbrowser.open("https://github.com/evo0616lution/AnyStatus/releases")
   
   
 
