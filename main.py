@@ -13,7 +13,7 @@ client = commands.Bot(
 client.remove_command('help')
 
 r = requests.get('https://evo-updater.glitch.me/anystatus.htm') # Checks for updates
-if "1.5" not in r.text:
+if "1.4" not in r.text:
   print("Newer version found! Please update on Github")
   webbrowser.open("https://github.com/evo0616lution/AnyStatus/releases")
   
