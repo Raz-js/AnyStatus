@@ -53,12 +53,16 @@ async def on_message(msg):
   if msg.author == client.user:
     if msg.content == ":playing":
       await client.change_presence(activity=discord.Game(name=f"{TEXT}"))
+      print("Switching to playing activity")
     elif msg.content == ":watching":
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{TEXT}"))
+      print("Switching to watching activity")
     elif msg.content == ":streaming":
       await client.change_presence(activity=discord.Streaming(name=f"{TEXT}", url="https://twitch.tv/discord"))
+      print("Switching to streaming activity")
     elif msg.content == ":listening":
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{TEXT}"))
+      print("Switching to listening activity")
     else:
       return
   else:
