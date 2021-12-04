@@ -4,6 +4,7 @@ from time import sleep
 import webbrowser
 import discord
 import asyncio
+import json
 from discord.ext import commands
 from colorama import Fore, init
 init() #Initalises colorama
@@ -14,7 +15,7 @@ client = commands.Bot(
 client.remove_command('help')
 
 r = requests.get('https://evo-updater.glitch.me/anystatus.htm') # Checks for updates
-if "1.5" not in r.text:
+if "1.6" not in r.text:
   print("Newer version found! Please update on Github")
   webbrowser.open("https://github.com/evo0616lution/AnyStatus/releases")
   return
@@ -35,40 +36,40 @@ def logo(): #Defines the logo
   print(Fore.RESET + "Made by https://github.com/evo0616lution")
 
   
+with open("config.json") as file:
+    info = json.load(file)
+    TOKEN = info["token"]
+    TEXT = info["text"]  
+    PREFIX = info["prefix"] 
   
-  
-logo()
-f = open("token.yaml", "r")
-TOKEN = f.read() #Loads the token from token.yaml
-f = open("text.yaml", "r")
-TEXT = f.read() #Loads the text from text.yaml    
+
     
 
     
 print(Fore.GREEN + "Custom status is ready!")    
 print(Fore.BLUE + "Available commands:")
-print(Fore.RESET + ":playing\n:watching\n:streaming\n:listening")
+print(Fore.RESET + f"{PREFIX}playing\n{PREFIX}watching\n{PREFIX}streaming\n{PREFIX}listening")
 
 
 @client.event
 async def on_message(msg):
   if msg.author == client.user:
-    if msg.content == ":playing":
+    if msg.content == f"{PREFIX}playing":
       await client.change_presence(activity=discord.Game(name=f"{TEXT}"))
       print("Switching to playing activity")
       await asyncio.sleep(1)
       await msg.delete()
-    elif msg.content == ":watching":
+    elif msg.content == f"{PREFIX}watching":
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{TEXT}"))
       print("Switching to watching activity")
       await asyncio.sleep(1)
       await msg.delete()
-    elif msg.content == ":streaming":
+    elif msg.content == f"{PREFIX}streaming":
       await client.change_presence(activity=discord.Streaming(name=f"{TEXT}", url="https://twitch.tv/discord"))
       print("Switching to streaming activity")
       await asyncio.sleep(1)
       await msg.delete()
-    elif msg.content == ":listening":
+    elif msg.content == f"{PREFIX}listening":
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{TEXT}"))
       print("Switching to listening activity")
       await asyncio.sleep(1)
