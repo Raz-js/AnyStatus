@@ -3,6 +3,7 @@ import requests
 from time import sleep
 import webbrowser
 import discord
+import asyncio
 from discord.ext import commands
 from colorama import Fore, init
 init() #Initalises colorama
@@ -13,7 +14,7 @@ client = commands.Bot(
 client.remove_command('help')
 
 r = requests.get('https://evo-updater.glitch.me/anystatus.htm') # Checks for updates
-if "1.4" not in r.text:
+if "1.5" not in r.text:
   print("Newer version found! Please update on Github")
   webbrowser.open("https://github.com/evo0616lution/AnyStatus/releases")
   
@@ -54,15 +55,23 @@ async def on_message(msg):
     if msg.content == ":playing":
       await client.change_presence(activity=discord.Game(name=f"{TEXT}"))
       print("Switching to playing activity")
+      await asyncio.sleep(1)
+      await msg.delete()
     elif msg.content == ":watching":
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{TEXT}"))
       print("Switching to watching activity")
+      await asyncio.sleep(1)
+      await msg.delete()
     elif msg.content == ":streaming":
       await client.change_presence(activity=discord.Streaming(name=f"{TEXT}", url="https://twitch.tv/discord"))
       print("Switching to streaming activity")
+      await asyncio.sleep(1)
+      await msg.delete()
     elif msg.content == ":listening":
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{TEXT}"))
       print("Switching to listening activity")
+      await asyncio.sleep(1)
+      await msg.delete()
     else:
       return
   else:
