@@ -44,7 +44,7 @@ with open("config.json") as file:
 
     
 
-    
+logo()    
 print(Fore.GREEN + "Custom status is ready!")    
 print(Fore.BLUE + "Available commands:")
 print(Fore.RESET + f"{PREFIX}playing\n{PREFIX}watching\n{PREFIX}streaming\n{PREFIX}listening")
