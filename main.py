@@ -15,7 +15,7 @@ client = commands.Bot(
 client.remove_command('help')
 
 r = requests.get('https://evo-updater.glitch.me/anystatus.htm') # Checks for updates
-if "1.6" not in r.text:
+if "1.7" not in r.text:
   print("Newer version found! Please update on Github")
   webbrowser.open("https://github.com/evo0616lution/AnyStatus/releases")
   
@@ -44,8 +44,9 @@ with open("config.json") as file:
 
     
 
-logo()    
-print(Fore.GREEN + "Custom status is ready!")    
+logo()  
+sleep(1)
+print(Fore.GREEN + "Custom presence is ready!")    
 print(Fore.BLUE + "Available commands:")
 print(Fore.RESET + f"{PREFIX}playing\n{PREFIX}watching\n{PREFIX}streaming\n{PREFIX}listening")
 
@@ -55,22 +56,22 @@ async def on_message(msg):
   if msg.author == client.user:
     if msg.content == f"{PREFIX}playing":
       await client.change_presence(activity=discord.Game(name=f"{TEXT}"))
-      print("Switching to playing activity")
+      print(Fore.BLUE + "[>>] Switching to playing activity")
       await asyncio.sleep(1)
       await msg.delete()
     elif msg.content == f"{PREFIX}watching":
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{TEXT}"))
-      print("Switching to watching activity")
+      print(Fore.BLUE + "[>>] Switching to watching activity")
       await asyncio.sleep(1)
       await msg.delete()
     elif msg.content == f"{PREFIX}streaming":
       await client.change_presence(activity=discord.Streaming(name=f"{TEXT}", url="https://twitch.tv/discord"))
-      print("Switching to streaming activity")
+      print(Fore.BLUE + "[>>] Switching to streaming activity")
       await asyncio.sleep(1)
       await msg.delete()
     elif msg.content == f"{PREFIX}listening":
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{TEXT}"))
-      print("Switching to listening activity")
+      print(Fore.BLUE + "[>>] Switching to listening activity")
       await asyncio.sleep(1)
       await msg.delete()
     else:
