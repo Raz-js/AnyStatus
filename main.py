@@ -56,23 +56,15 @@ async def on_message(msg):
     if msg.content == f"{PREFIX}playing":
       await client.change_presence(activity=discord.Game(name=f"{TEXT}"))
       print("Switching to playing activity")
-      await asyncio.sleep(1)
-      await msg.delete()
     elif msg.content == f"{PREFIX}watching":
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{TEXT}"))
       print("Switching to watching activity")
-      await asyncio.sleep(1)
-      await msg.delete()
     elif msg.content == f"{PREFIX}streaming":
       await client.change_presence(activity=discord.Streaming(name=f"{TEXT}", url="https://twitch.tv/discord"))
       print("Switching to streaming activity")
-      await asyncio.sleep(1)
-      await msg.delete()
     elif msg.content == f"{PREFIX}listening":
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{TEXT}"))
       print("Switching to listening activity")
-      await asyncio.sleep(1)
-      await msg.delete()
     else:
       return
   else:
