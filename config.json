@@ -1,5 +1,5 @@
 {
-    "token":"token goes here",
+    "token":Null,
     "text":"text goes here",
     "prefix":":"
 }
