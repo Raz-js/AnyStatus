@@ -40,14 +40,7 @@ with open("config.json") as file:
     TOKEN = info["token"]
     TEXT = info["text"]  
     PREFIX = info["prefix"] 
-if TOKEN == None:
-  sleep(1)
-  tkn = input("Your discord token: ")
-  with open("config.json", "r") as f:
-    data = json.load(f)
-  data["token"] = tkn
-  with open("config.json", "w") as jsonFile:
-    json.dump(data, jsonFile)
+
 
     
 
