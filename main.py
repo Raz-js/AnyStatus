@@ -57,9 +57,7 @@ if TOKEN == "default":
     
 
 logo() 
-sleep(2)
 playsound("jingle.mp3")
-sleep(10)
 print(Fore.GREEN + "Custom presence is ready!")    
 playsound("ready.wav")
 print(Fore.BLUE + "Available commands:")
