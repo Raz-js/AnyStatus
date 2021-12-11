@@ -53,28 +53,28 @@ print(Fore.RESET + f"{PREFIX}playing <text>\n{PREFIX}watching <text>\n{PREFIX}st
 @client.event
 async def on_message(msg):
   if msg.author == client.user:
-    if "{PREFIX}playing" in msg.content:
+    if f"{PREFIX}playing" in msg.content:
       x = msg.content.split(" ")
       val = x[1]
       await client.change_presence(activity=discord.Game(name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to playing activity")
       await asyncio.sleep(1)
       await msg.delete()
-    elif "{PREFIX}watching" in msg.content:
+    elif f"{PREFIX}watching" in msg.content:
       x = msg.content.split(" ")
       val = x[1]
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to watching activity")
       await asyncio.sleep(1)
       await msg.delete()
-    elif "{PREFIX}streaming" in msg.content:
+    elif f"{PREFIX}streaming" in msg.content:
       x = msg.content.split(" ")
       val = x[1]
       await client.change_presence(activity=discord.Streaming(name=f"{val}", url="https://twitch.tv/discord"))
       print(Fore.BLUE + "[>>] Switching to streaming activity")
       await asyncio.sleep(1)
       await msg.delete()
-    elif "{PREFIX}listening" in msg.content:
+    elif f"{PREFIX}listening" in msg.content:
       x = msg.content.split(" ")
       val = x[1]
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{val}"))
