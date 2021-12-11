@@ -1,3 +1,4 @@
+@echo off
 echo Launching AnyStatus...
 pip install -r requirements.txt
 test&cls
