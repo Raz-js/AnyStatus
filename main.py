@@ -60,7 +60,7 @@ logo()
 playsound("jingle.wav")
 print(Fore.GREEN + "Custom presence is ready!")    
 print(Fore.BLUE + "Available commands:")
-print(Fore.RESET + f"{PREFIX}playing = <text>\n{PREFIX}watching = <text>\n{PREFIX}streaming = <text>\n{PREFIX}listening = <text>")
+print(Fore.RESET + f"{PREFIX}playing = <text>\n{PREFIX}watching = <text>\n{PREFIX}streaming = <text>\n{PREFIX}listening = <text>\n{PREFIX}stop")
 
 
 @client.event
@@ -93,6 +93,11 @@ async def on_message(msg):
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to listening activity")
       playsound("listening.wav")
+      await msg.delete()
+    elif f"{PREFIX}stop" in msg.content:
+      await client.change_presence(activity=None)
+      print(Fore.BLUE + "[>>] Stopping activity")
+      playsound("stopping.wav")
       await msg.delete()
     else:
       return
