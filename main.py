@@ -38,7 +38,6 @@ def logo(): #Defines the logo
 with open("config.json") as file:
     info = json.load(file)
     TOKEN = info["token"]
-    TEXT = info["text"]  
     PREFIX = info["prefix"] 
 
 
@@ -48,29 +47,37 @@ logo()
 sleep(1)
 print(Fore.GREEN + "Custom presence is ready!")    
 print(Fore.BLUE + "Available commands:")
-print(Fore.RESET + f"{PREFIX}playing\n{PREFIX}watching\n{PREFIX}streaming\n{PREFIX}listening")
+print(Fore.RESET + f"{PREFIX}playing <text>\n{PREFIX}watching <text>\n{PREFIX}streaming <text>\n{PREFIX}listening <text>")
 
 
 @client.event
 async def on_message(msg):
   if msg.author == client.user:
-    if msg.content == f"{PREFIX}playing":
-      await client.change_presence(activity=discord.Game(name=f"{TEXT}"))
+    if "{PREFIX}playing" in msg.content:
+      x = msg.content.split(" ")
+      val = x[1]
+      await client.change_presence(activity=discord.Game(name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to playing activity")
       await asyncio.sleep(1)
       await msg.delete()
-    elif msg.content == f"{PREFIX}watching":
-      await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{TEXT}"))
+    elif "{PREFIX}watching" in msg.content:
+      x = msg.content.split(" ")
+      val = x[1]
+      await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to watching activity")
       await asyncio.sleep(1)
       await msg.delete()
-    elif msg.content == f"{PREFIX}streaming":
-      await client.change_presence(activity=discord.Streaming(name=f"{TEXT}", url="https://twitch.tv/discord"))
+    elif "{PREFIX}streaming" in msg.content:
+      x = msg.content.split(" ")
+      val = x[1]
+      await client.change_presence(activity=discord.Streaming(name=f"{val}", url="https://twitch.tv/discord"))
       print(Fore.BLUE + "[>>] Switching to streaming activity")
       await asyncio.sleep(1)
       await msg.delete()
-    elif msg.content == f"{PREFIX}listening":
-      await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{TEXT}"))
+    elif "{PREFIX}listening" in msg.content:
+      x = msg.content.split(" ")
+      val = x[1]
+      await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to listening activity")
       await asyncio.sleep(1)
       await msg.delete()
