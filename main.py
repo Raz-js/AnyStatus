@@ -47,35 +47,35 @@ logo()
 sleep(1)
 print(Fore.GREEN + "Custom presence is ready!")    
 print(Fore.BLUE + "Available commands:")
-print(Fore.RESET + f"{PREFIX}playing <text>\n{PREFIX}watching <text>\n{PREFIX}streaming <text>\n{PREFIX}listening <text>")
+print(Fore.RESET + f"{PREFIX}playing = <text>\n{PREFIX}watching = <text>\n{PREFIX}streaming = <text>\n{PREFIX}listening = <text>")
 
 
 @client.event
 async def on_message(msg):
   if msg.author == client.user:
     if f"{PREFIX}playing" in msg.content:
-      x = msg.content.split(" ")
+      x = msg.content.split("= ")
       val = x[1]
       await client.change_presence(activity=discord.Game(name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to playing activity")
       await asyncio.sleep(1)
       await msg.delete()
     elif f"{PREFIX}watching" in msg.content:
-      x = msg.content.split(" ")
+      x = msg.content.split("= ")
       val = x[1]
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to watching activity")
       await asyncio.sleep(1)
       await msg.delete()
     elif f"{PREFIX}streaming" in msg.content:
-      x = msg.content.split(" ")
+      x = msg.content.split("= ")
       val = x[1]
       await client.change_presence(activity=discord.Streaming(name=f"{val}", url="https://twitch.tv/discord"))
       print(Fore.BLUE + "[>>] Switching to streaming activity")
       await asyncio.sleep(1)
       await msg.delete()
     elif f"{PREFIX}listening" in msg.content:
-      x = msg.content.split(" ")
+      x = msg.content.split("= ")
       val = x[1]
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to listening activity")
