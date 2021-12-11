@@ -2,3 +2,4 @@ discord
 pyyaml
 requests
 colorama
+playsound
