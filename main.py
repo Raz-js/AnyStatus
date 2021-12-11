@@ -5,6 +5,7 @@ import webbrowser
 import discord
 import asyncio
 import json
+import sys
 from discord.ext import commands
 from colorama import Fore, init
 from playsound import playsound
@@ -48,12 +49,12 @@ if TOKEN == "default":
   a_file = open("config.json", "r")
   json_object = json.load(a_file)
   json_object["token"] = tkn
-  a_file = open("json.json", "w")
+  a_file = open("config.json", "w")
   json.dump(json_object, a_file)
-  with open("config.json") as file:
-    info = json.load(file)
-    TOKEN = info["token"]
-    PREFIX = info["prefix"]
+  print("AnyStatus is restarting in order to save the changes")
+  sleep(2)
+  sys.exit()
+
     
 
 logo() 
