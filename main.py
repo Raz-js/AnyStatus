@@ -7,6 +7,7 @@ import asyncio
 import json
 from discord.ext import commands
 from colorama import Fore, init
+from playsound import playsound
 init() #Initalises colorama
 client = commands.Bot(
   command_prefix=':',
@@ -19,6 +20,8 @@ if "1.8" not in r.text:
   print("Newer version found! Please update on Github")
   webbrowser.open("https://github.com/evo0616lution/AnyStatus/releases")
   
+
+playsound("ut/welcome.wav")
   
 
 def logo(): #Defines the logo
@@ -40,14 +43,27 @@ with open("config.json") as file:
     TOKEN = info["token"]
     PREFIX = info["prefix"] 
 
-
+if TOKEN == "default":
+  tkn = input("Your discord token: ")
+  a_file = open("config.json", "r")
+  json_object = json.load(a_file)
+  json_object["token"] = tkn
+  a_file = open("json.json", "w")
+  json.dump(json_object, a_file)
+  with open("config.json") as file:
+    info = json.load(file)
+    TOKEN = info["token"]
+    PREFIX = info["prefix"]
     
 
-logo()  
-sleep(1)
+logo() 
+sleep(2)
+playsound("ut/jingle.mp3")
+sleep(10)
 print(Fore.GREEN + "Custom presence is ready!")    
+playsound("ut/ready.wav")
 print(Fore.BLUE + "Available commands:")
-print(Fore.RESET + f"{PREFIX}playing = <text>\n{PREFIX}watching = <text>\n{PREFIX}streaming = <text>\n{PREFIX}listening = <text>")
+print(Fore.RESET + f"{PREFIX}playing = <text>\n{PREFIX}watching = <text>\n{PREFIX}streaming = <text>\n{PREFIX}listening = <text>\n{PREFIX}stop")
 
 
 @client.event
@@ -58,6 +74,7 @@ async def on_message(msg):
       val = x[1]
       await client.change_presence(activity=discord.Game(name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to playing activity")
+      playsound("u/playing.wav")
       await asyncio.sleep(1)
       await msg.delete()
     elif f"{PREFIX}watching" in msg.content:
@@ -65,6 +82,7 @@ async def on_message(msg):
       val = x[1]
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to watching activity")
+      playsound("u/watching.wav")
       await asyncio.sleep(1)
       await msg.delete()
     elif f"{PREFIX}streaming" in msg.content:
@@ -72,6 +90,7 @@ async def on_message(msg):
       val = x[1]
       await client.change_presence(activity=discord.Streaming(name=f"{val}", url="https://twitch.tv/discord"))
       print(Fore.BLUE + "[>>] Switching to streaming activity")
+      playsound("u/streaming.wav")
       await asyncio.sleep(1)
       await msg.delete()
     elif f"{PREFIX}listening" in msg.content:
@@ -79,6 +98,7 @@ async def on_message(msg):
       val = x[1]
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to listening activity")
+      playsound("u/listening.wav")
       await asyncio.sleep(1)
       await msg.delete()
     else:
