@@ -16,12 +16,12 @@ client = commands.Bot(
 client.remove_command('help')
 
 r = requests.get('https://evo-updater.glitch.me/anystatus.htm') # Checks for updates
-if "1.8" not in r.text:
+if "1.9" not in r.text:
   print("Newer version found! Please update on Github")
   webbrowser.open("https://github.com/evo0616lution/AnyStatus/releases")
   
 
-playsound("ut/welcome.wav")
+playsound("welcome.wav")
   
 
 def logo(): #Defines the logo
@@ -58,10 +58,10 @@ if TOKEN == "default":
 
 logo() 
 sleep(2)
-playsound("ut/jingle.mp3")
+playsound("jingle.mp3")
 sleep(10)
 print(Fore.GREEN + "Custom presence is ready!")    
-playsound("ut/ready.wav")
+playsound("ready.wav")
 print(Fore.BLUE + "Available commands:")
 print(Fore.RESET + f"{PREFIX}playing = <text>\n{PREFIX}watching = <text>\n{PREFIX}streaming = <text>\n{PREFIX}listening = <text>\n{PREFIX}stop")
 
@@ -74,7 +74,7 @@ async def on_message(msg):
       val = x[1]
       await client.change_presence(activity=discord.Game(name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to playing activity")
-      playsound("u/playing.wav")
+      playsound("playing.wav")
       await asyncio.sleep(1)
       await msg.delete()
     elif f"{PREFIX}watching" in msg.content:
@@ -82,7 +82,7 @@ async def on_message(msg):
       val = x[1]
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to watching activity")
-      playsound("u/watching.wav")
+      playsound("watching.wav")
       await asyncio.sleep(1)
       await msg.delete()
     elif f"{PREFIX}streaming" in msg.content:
@@ -90,7 +90,7 @@ async def on_message(msg):
       val = x[1]
       await client.change_presence(activity=discord.Streaming(name=f"{val}", url="https://twitch.tv/discord"))
       print(Fore.BLUE + "[>>] Switching to streaming activity")
-      playsound("u/streaming.wav")
+      playsound("streaming.wav")
       await asyncio.sleep(1)
       await msg.delete()
     elif f"{PREFIX}listening" in msg.content:
@@ -98,7 +98,7 @@ async def on_message(msg):
       val = x[1]
       await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{val}"))
       print(Fore.BLUE + "[>>] Switching to listening activity")
-      playsound("u/listening.wav")
+      playsound("listening.wav")
       await asyncio.sleep(1)
       await msg.delete()
     else:
