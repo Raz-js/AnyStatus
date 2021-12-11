@@ -62,7 +62,7 @@ playsound("jingle.mp3")
 print(Fore.GREEN + "Custom presence is ready!")    
 playsound("ready.wav")
 print(Fore.BLUE + "Available commands:")
-print(Fore.RESET + f"{PREFIX}playing = <text>\n{PREFIX}watching = <text>\n{PREFIX}streaming = <text>\n{PREFIX}listening = <text>\n{PREFIX}stop")
+print(Fore.RESET + f"{PREFIX}playing = <text>\n{PREFIX}watching = <text>\n{PREFIX}streaming = <text>\n{PREFIX}listening = <text>")
 
 
 @client.event
