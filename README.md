@@ -12,3 +12,4 @@ Next, open a new terminal in the current folder and execute the following comman
 
 Also remember that it can take up to 5 minutes to update your status
 
+Also check AnyStatus on <a href="https://sourceforge.net/projects/anystatus/"> sourceforge</a>.
