@@ -13,5 +13,5 @@ Next, open a new terminal in the current folder and execute the following comman
  Then open `main.py` and your custom status is ready :)   
  Send `<prefix><activity> = <text>` in any discord channel to change your status. Example: `--playing = Minecraft`
  You can alternatively run `chmod +x run.sh` in the console and open `run.sh` afterwards or open `run.bat` if you're a windows user for automatic package installation and quick launch.
-
+🛑 AnyStatus only works on discord.py 1.7.3, keep that in mind!
 Also remember that it can take up to 5 minutes to update your status
