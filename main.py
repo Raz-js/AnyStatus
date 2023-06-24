@@ -1,107 +1,95 @@
-#Import additional packages
 import requests
+import sys, os
 from time import sleep
 import webbrowser
 import discord
-import asyncio
 import json
-import sys
-from discord.ext import commands
 from colorama import Fore, init
-from playsound import playsound
-init() #Initalises colorama
+from discord.ext import commands
+from console.utils import set_title
+init()  # Initializes colorama
+set_title("AnyStatus | By github.com/pacity")
 client = commands.Bot(
-  command_prefix=':',
-  self_bot=True
-) #Defines the client
+    command_prefix=':',
+    self_bot=True,
+    intents=discord.Intents.all()
+)
 client.remove_command('help')
 
-r = requests.get('https://evo-updater.glitch.me/anystatus.htm') # Checks for updates
-if "2.2" not in r.text:
-  print("Newer version found! Please update on Github")
-  webbrowser.open("https://github.com/evo0616lution/AnyStatus/releases")
-  
+# ------------------------
+# CURRENT VERSION GOES HERE:
+version = "2.3"
+# ----------------------------
 
-  
+r = requests.get('https://pacity-database.glitch.me/anystatus.htm')  # Checks for updates
+if version not in r.text:
+    print("Newer version found! Please update on Github")
+    sleep(2)
+    webbrowser.open("https://pacity-database.glitch.me/anystatus-download.htm")
+    sys.exit()
 
-def logo(): #Defines the logo
-  print(Fore.YELLOW + """
 
+def logo():
+    print(Fore.YELLOW + """
     ___                _____ __        __            
    /   |  ____  __  __/ ___// /_____ _/ /___  _______
   / /| | / __ \/ / / /\__ \/ __/ __ `/ __/ / / / ___/
  / ___ |/ / / / /_/ /___/ / /_/ /_/ / /_/ /_/ (__  ) 
 /_/  |_/_/ /_/\__, //____/\__/\__,_/\__/\__,_/____/  
              /____/                                  
-
 """)
-  print(Fore.RESET + "Made by https://github.com/evo0616lution")
+    print(Fore.RESET + "Made by https://github.com/pacity")
 
-  
+
 with open("config.json") as file:
     info = json.load(file)
     TOKEN = info["token"]
-    PREFIX = info["prefix"] 
+    PREFIX = info["prefix"]
 
 if TOKEN == "default":
-  tkn = input("Your discord token: ")
-  a_file = open("config.json", "r")
-  json_object = json.load(a_file)
-  json_object["token"] = tkn
-  a_file = open("config.json", "w")
-  json.dump(json_object, a_file)
-  print("Please restart AnyStatus in order to save the changes")
-  sleep(2)
-  sys.exit()
+    tkn = input("Your discord token: ")
+    info["token"] = tkn
+    with open("config.json", "w") as file:
+        json.dump(info, file)
+    print("Please restart AnyStatus in order to save the changes")
+    sleep(2)
+    sys.exit()
 
-    
 
-logo() 
-print(Fore.GREEN + "Custom presence is ready!")    
+logo()
+print(Fore.GREEN + "Custom presence is ready!")
 print(Fore.BLUE + "Available commands:")
 print(Fore.RESET + f"{PREFIX}playing = <text>\n{PREFIX}watching = <text>\n{PREFIX}streaming = <text>\n{PREFIX}listening = <text>\n{PREFIX}stop")
 
 
 @client.event
 async def on_message(msg):
-  if msg.author == client.user:
-    if f"{PREFIX}playing" in msg.content:
-      x = msg.content.split("= ")
-      val = x[1]
-      await client.change_presence(activity=discord.Game(name=f"{val}"))
-      print(Fore.BLUE + "[>>] Switching to playing activity")
-      playsound("playing.wav")
-      await msg.delete()
-    elif f"{PREFIX}watching" in msg.content:
-      x = msg.content.split("= ")
-      val = x[1]
-      await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{val}"))
-      print(Fore.BLUE + "[>>] Switching to watching activity")
-      playsound("watching.wav")
-      await msg.delete()
-    elif f"{PREFIX}streaming" in msg.content:
-      x = msg.content.split("= ")
-      val = x[1]
-      await client.change_presence(activity=discord.Streaming(name=f"{val}", url="https://twitch.tv/discord"))
-      print(Fore.BLUE + "[>>] Switching to streaming activity")
-      playsound("streaming.wav")
-      await msg.delete()
-    elif f"{PREFIX}listening" in msg.content:
-      x = msg.content.split("= ")
-      val = x[1]
-      await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{val}"))
-      print(Fore.BLUE + "[>>] Switching to listening activity")
-      playsound("listening.wav")
-      await msg.delete()
-    elif f"{PREFIX}stop" in msg.content:
-      await client.change_presence(activity=None)
-      print(Fore.BLUE + "[>>] Stopping activity")
-      playsound("stopping.wav")
-      await msg.delete()
-    else:
-      return
-  else:
-    return
+    if msg.author == client.user:
+        content = msg.content.lower().strip()
+        if content.startswith(f"{PREFIX}playing"):
+            val = content.replace(f"{PREFIX}playing", "").strip()
+            await client.change_presence(activity=discord.Game(name=val))
+            print(Fore.BLUE + "[>>] Switching to playing activity")
+            await msg.delete()
+        elif content.startswith(f"{PREFIX}watching"):
+            val = content.replace(f"{PREFIX}watching", "").strip()
+            await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=val))
+            print(Fore.BLUE + "[>>] Switching to watching activity")
+            await msg.delete()
+        elif content.startswith(f"{PREFIX}streaming"):
+            val = content.replace(f"{PREFIX}streaming", "").strip()
+            await client.change_presence(activity=discord.Streaming(name=val, url="https://twitch.tv/discord"))
+            print(Fore.BLUE + "[>>] Switching to streaming activity")
+            await msg.delete()
+        elif content.startswith(f"{PREFIX}listening"):
+            val = content.replace(f"{PREFIX}listening", "").strip()
+            await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=val))
+            print(Fore.BLUE + "[>>] Switching to listening activity")
+            await msg.delete()
+        elif content.startswith(f"{PREFIX}stop"):
+            await client.change_presence(activity=None)
+            print(Fore.BLUE + "[>>] Stopping activity")
+            await msg.delete()
 
-      
+
 client.run(TOKEN, bot=False)
