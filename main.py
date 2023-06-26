@@ -20,7 +20,7 @@ client.remove_command('help')
 
 # ------------------------
 # CURRENT VERSION GOES HERE:
-version = "2.3"
+version = "2.4"
 # ----------------------------
 
 r = requests.get('https://pacity-database.glitch.me/anystatus.htm')  # Checks for updates
