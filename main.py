@@ -7,8 +7,10 @@ import json
 from colorama import Fore, init
 from discord.ext import commands
 from console.utils import set_title
+
 init()  # Initializes colorama
 set_title("AnyStatus | By github.com/pacity")
+
 client = commands.Bot(
     command_prefix=':',
     self_bot=True,
@@ -65,7 +67,7 @@ print(Fore.RESET + f"{PREFIX}playing = <text>\n{PREFIX}watching = <text>\n{PREFI
 @client.event
 async def on_message(msg):
     if msg.author == client.user:
-        content = msg.content.lower().strip()
+        content = msg.content.strip()
         if content.startswith(f"{PREFIX}playing"):
             val = content.replace(f"{PREFIX}playing", "").strip()
             await client.change_presence(activity=discord.Game(name=val))
