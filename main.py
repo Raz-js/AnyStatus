@@ -20,7 +20,7 @@ client.remove_command('help')
 
 # ------------------------
 # CURRENT VERSION GOES HERE:
-version = "2.4"
+version = "2.5"
 # ----------------------------
 
 r = requests.get('https://pacity-database.glitch.me/anystatus.htm')  # Checks for updates
@@ -61,7 +61,7 @@ if TOKEN == "default":
 logo()
 print(Fore.GREEN + "Custom presence is ready!")
 print(Fore.BLUE + "Available commands:")
-print(Fore.RESET + f"{PREFIX}playing = <text>\n{PREFIX}watching = <text>\n{PREFIX}streaming = <text>\n{PREFIX}listening = <text>\n{PREFIX}stop")
+print(Fore.RESET + f"{PREFIX}playing <text>\n{PREFIX}watching <text>\n{PREFIX}streaming <text>\n{PREFIX}listening <text>\n{PREFIX}stop")
 
 
 @client.event
