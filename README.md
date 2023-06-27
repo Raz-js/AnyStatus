@@ -4,7 +4,7 @@ Get your own sweet custom discord status!
 
 <img src="https://i.ibb.co/5MMS4qW/Add-a-subheading.png" alt="AnyStatus Banner">
 
-✅ Finally updated to v.2.4 2023!
+✅ Finally updated to work in 2023!
 
 Paste your account token and your desired prefix in `config.json`. The file can be opened using the normal Notepad. You can find your token <a href="https://www.youtube.com/watch?v=YEgFvgg7ZPI">here</a>.
 You need to have Python installed to use AnyStatus.
