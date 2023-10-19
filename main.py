@@ -9,7 +9,7 @@ from discord.ext import commands
 from console.utils import set_title
 
 init()  # Initializes colorama
-set_title("AnyStatus | By github.com/pacity")
+set_title("AnyStatus | By github.com/its-gallium")
 
 client = commands.Bot(
     command_prefix=':',
@@ -23,11 +23,11 @@ client.remove_command('help')
 version = "2.5"
 # ----------------------------
 
-r = requests.get('https://pacity-database.glitch.me/anystatus.htm')  # Checks for updates
+r = requests.get('https://gal-database.glitch.me/anystatus.htm')  # Checks for updates
 if version not in r.text:
     print("Newer version found! Please update on Github")
     sleep(2)
-    webbrowser.open("https://pacity-database.glitch.me/anystatus-download.htm")
+    webbrowser.open("https://gal-database.glitch.me/anystatus-download.htm")
     sys.exit()
 
 
