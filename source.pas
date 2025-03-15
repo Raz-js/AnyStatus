@@ -35,11 +35,7 @@ type
     edtTopic: TEdit;
     btnPwd: TButton;
     btnReset: TButton;
-    Button1: TButton;
-    Image1: TImage;
-    Label1: TLabel;
     Image2: TImage;
-    OpenDialog1: TOpenDialog;
     PythonEngine1: TPythonEngine;
     PythonGUIInputOutput1: TPythonGUIInputOutput;
     memPython: TMemo;
@@ -55,7 +51,6 @@ type
     procedure rbPlayClick(Sender: TObject);
     procedure btnPwdClick(Sender: TObject);
     procedure btnResetClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure edtTopicChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -244,14 +239,6 @@ begin
   // Write the JSON string to the file
   TFile.WriteAllText(ExtractFilePath(ParamStr(0)) + 'cfg.json', sJSON);
   memOutput.Lines.Add('Reset cfg.json file.')
-end;
-
-procedure TForm1.Button1Click(Sender: TObject);
-begin
-  if OpenDialog1.Execute then
-  begin
-    Image1.Picture.LoadFromFile(OpenDialog1.FileName);
-  end;
 end;
 
 procedure TForm1.edtTokenChange(Sender: TObject);

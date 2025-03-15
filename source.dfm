@@ -3154,7 +3154,7 @@ object Form1: TForm1
     end
     object lblStatus: TLabel
       Left = 11
-      Top = 187
+      Top = 125
       Width = 32
       Height = 15
       Caption = 'Status'
@@ -3165,20 +3165,6 @@ object Form1: TForm1
       Width = 28
       Height = 15
       Caption = 'Topic'
-    end
-    object Image1: TImage
-      Left = 304
-      Top = 125
-      Width = 73
-      Height = 73
-      Proportional = True
-    end
-    object Label1: TLabel
-      Left = 11
-      Top = 125
-      Width = 33
-      Height = 15
-      Caption = 'Image'
     end
     object edtToken: TEdit
       Left = 11
@@ -3193,9 +3179,9 @@ object Form1: TForm1
     end
     object memOutput: TMemo
       Left = 11
-      Top = 208
+      Top = 146
       Width = 366
-      Height = 65
+      Height = 127
       ImeName = 'memOutput'
       Lines.Strings = (
         'memOutput')
@@ -3730,15 +3716,6 @@ object Form1: TForm1
     TabOrder = 9
     OnClick = btnResetClick
   end
-  object Button1: TButton
-    Left = 227
-    Top = 272
-    Width = 287
-    Height = 28
-    Caption = 'Upload Image'
-    TabOrder = 10
-    OnClick = Button1Click
-  end
   object memPython: TMemo
     Left = 218
     Top = 0
@@ -3747,12 +3724,8 @@ object Form1: TForm1
     ImeName = 'memPython'
     Lines.Strings = (
       'memPython')
-    TabOrder = 11
+    TabOrder = 10
     Visible = False
-  end
-  object OpenDialog1: TOpenDialog
-    Left = 544
-    Top = 263
   end
   object PythonEngine1: TPythonEngine
     Left = 368
