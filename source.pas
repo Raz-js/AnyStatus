@@ -107,9 +107,9 @@ begin
   begin
     sJSON :=
     '{'#13#10 +
-    '  "status": "stop",'#13#10 +
-    '  "topic": " ",'#13#10 +
-    '  "token": " "'#13#10 +
+    '  "status": "Stop",'#13#10 +
+    '  "topic": "null",'#13#10 +
+    '  "token": "null"'#13#10 +
     '}';
 
     TFile.WriteAllText(ExtractFilePath(ParamStr(0)) + 'cfg.json', sJSON);
@@ -123,7 +123,7 @@ begin
           TFile.ReadAllText(ExtractFilePath(ParamStr(0)) + 'cfg.json')));
       memOutput.Lines.Add('Loaded configuration from cfg.json file.');
       try
-        if jVal.GetValue<string>('token')=' ' then
+        if jVal.GetValue<string>('token')='null' then
         begin
         memOutput.Lines.Add('No token detected.');
         edtToken.Text:='';
@@ -131,7 +131,7 @@ begin
            try
               slJSON.LoadFromFile(ExtractFilePath(ParamStr(0)) + 'cfg.json');
 
-              slJSON[3] := '  "token": " "';
+              slJSON[3] := '  "token": "null"';
 
               slJSON.SaveToFile(ExtractFilePath(ParamStr(0)) + 'cfg.json');
           finally
@@ -142,7 +142,7 @@ begin
         begin
           edtToken.Text := jVal.GetValue<string>('token');
         end;
-        if jVal.GetValue<string>('topic')=' ' then
+        if jVal.GetValue<string>('topic')='null' then
         begin
         memOutput.Lines.Add('No topic detected.');
         edtTopic.Text:='';
@@ -150,7 +150,7 @@ begin
            try
               slJSON.LoadFromFile(ExtractFilePath(ParamStr(0)) + 'cfg.json');
 
-              slJSON[2] := '  "topic": " ",';
+              slJSON[2] := '  "topic": "null",';
 
               slJSON.SaveToFile(ExtractFilePath(ParamStr(0)) + 'cfg.json');
           finally
@@ -218,9 +218,9 @@ procedure TForm1.btnResetClick(Sender: TObject);
 begin
   sJSON :=
   '{'#13#10 +
-  '  "status": "",'#13#10 +
-  '  "topic": " ",'#13#10 +
-  '  "token": " "'#13#10 +
+  '  "status": "Stop",'#13#10 +
+  '  "topic": "null",'#13#10 +
+  '  "token": "null"'#13#10 +
   '}';
 
   // Write the JSON string to the file
@@ -290,8 +290,10 @@ begin
     slJSON.Free;
   end;
 
+  jVal := TJSONObject(TJSONObject.ParseJSONValue(
+   TFile.ReadAllText(ExtractFilePath(ParamStr(0)) + 'cfg.json')));
 
-  if (sToken='') or (sTopic='') then
+  if (jVal.GetValue<string>('token')='null') or (jVal.GetValue<string>('topic')='null') then
   begin
     memOutput.Lines.Add('No token or topic detected.');
     rbStop.Checked := True;
@@ -342,7 +344,10 @@ begin
     slJSON.Free;
   end;
 
-  if (sToken='') or (sTopic='') then
+  jVal := TJSONObject(TJSONObject.ParseJSONValue(
+   TFile.ReadAllText(ExtractFilePath(ParamStr(0)) + 'cfg.json')));
+
+  if (jVal.GetValue<string>('token')='null') or (jVal.GetValue<string>('topic')='null') then
   begin
     memOutput.Lines.Add('No token or topic detected.');
     rbStop.Checked := True;
@@ -413,7 +418,10 @@ begin
     slJSON.Free;
   end;
 
-  if (sToken='') or (sTopic='') then
+  jVal := TJSONObject(TJSONObject.ParseJSONValue(
+   TFile.ReadAllText(ExtractFilePath(ParamStr(0)) + 'cfg.json')));
+
+  if (jVal.GetValue<string>('token')='null') or (jVal.GetValue<string>('topic')='null') then
   begin
     memOutput.Lines.Add('No token or topic detected.');
     rbStop.Checked := True;
@@ -465,7 +473,10 @@ begin
     slJSON.Free;
   end;
 
-  if (sToken='') or (sTopic='') then
+  jVal := TJSONObject(TJSONObject.ParseJSONValue(
+   TFile.ReadAllText(ExtractFilePath(ParamStr(0)) + 'cfg.json')));
+
+  if (jVal.GetValue<string>('token')='null') or (jVal.GetValue<string>('topic')='null') then
   begin
     memOutput.Lines.Add('No token or topic detected.');
     rbStop.Checked := True;
