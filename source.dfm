@@ -3727,15 +3727,4 @@ object Form1: TForm1
     TabOrder = 10
     Visible = False
   end
-  object PythonEngine1: TPythonEngine
-    Left = 368
-    Top = 407
-  end
-  object PythonGUIInputOutput1: TPythonGUIInputOutput
-    UnicodeIO = True
-    RawOutput = False
-    Output = memOutput
-    Left = 432
-    Top = 408
-  end
 end

@@ -5,8 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.JSON, System.IOUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, ShellApi, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.pngimage, Vcl.Imaging.jpeg, SyncObjs, System.Diagnostics, System.Threading,
-  PythonEngine, Vcl.PythonGUIInputOutput;
+  Vcl.Imaging.pngimage;
 
 type
   TForm1 = class(TForm)
@@ -36,8 +35,6 @@ type
     btnPwd: TButton;
     btnReset: TButton;
     Image2: TImage;
-    PythonEngine1: TPythonEngine;
-    PythonGUIInputOutput1: TPythonGUIInputOutput;
     memPython: TMemo;
     procedure ghRazClick(Sender: TObject);
     procedure ghTheoClick(Sender: TObject);
@@ -57,7 +54,6 @@ type
     procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
-    procedure RunPythonCode;
     procedure CloseProcessByTitle(const WindowTitle: string);
   public
     { Public declarations }
@@ -87,13 +83,6 @@ begin
 
 end;
 
-procedure TForm1.RunPythonCode;
-begin
-
-  // Execute the Python code in the console
-  PythonEngine1.ExecStrings(memPython.Lines);
-end;
-
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 CloseProcessByTitle('AnyStatus | By github.com/raz-js');
@@ -102,8 +91,6 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-
-  // Execute the command in the directory of the executable
   ShellExecute(0, nil, PChar('cmd.exe'), PChar('/c ' + 'python.exe -m pip install -r requirements.txt'), PChar(ExtractFilePath(ParamStr(0))), SW_HIDE);
   memOutput.Text := 'AnyStatus has been loaded.';
   memOutput.Lines.Add('Remember to make sure your token is valid!')
