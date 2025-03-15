@@ -3212,16 +3212,16 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 7
     object lblTitle: TLabel
-      Left = 28
-      Top = 16
-      Width = 126
-      Height = 29
+      Left = 43
+      Top = 14
+      Width = 108
+      Height = 31
       Caption = 'AnyStatus'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -23
-      Font.Name = 'Showcard Gothic'
-      Font.Style = []
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
       ParentFont = False
     end
     object lblAddressing: TLabel
@@ -3239,43 +3239,43 @@ object Form1: TForm1
       Caption = 'by'
     end
     object lblCredit: TLabel
-      Left = 50
-      Top = 88
-      Width = 92
-      Height = 17
-      Caption = 'Raz and Theo'
-      Font.Charset = DEFAULT_CHARSET
+      Left = 83
+      Top = 87
+      Width = 20
+      Height = 15
+      Caption = 'and'
+      Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'RomanD'
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object ghRaz: TLabel
-      Left = 49
-      Top = 88
-      Width = 23
-      Height = 17
+      Left = 58
+      Top = 87
+      Width = 20
+      Height = 15
       Caption = 'Raz'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'RomanD'
-      Font.Style = []
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
       ParentFont = False
       OnClick = ghRazClick
     end
     object ghTheo: TLabel
-      Left = 115
+      Left = 108
       Top = 88
-      Width = 29
-      Height = 17
+      Width = 26
+      Height = 13
       Caption = 'Theo'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
-      Font.Name = 'RomanD'
-      Font.Style = []
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
       ParentFont = False
       OnClick = ghTheoClick
     end
