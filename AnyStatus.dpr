@@ -1,8 +1,8 @@
-program richpresence;
+program AnyStatus;
 
 uses
   Vcl.Forms,
-  anystatus in 'anystatus.pas' {Form1},
+  source in 'source.pas' {Form1},
   Vcl.Themes,
   Vcl.Styles;
 
