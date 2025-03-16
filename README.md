@@ -75,7 +75,7 @@
 
 ## Credits
 - **Developed by**: [Raz](https://github.com/raz-js)
-- **Contributions by**: [Theo](https://github.com/its-theo)
+- **Contributions by**: [Theo](https://codeberg.org/its-theo)
 
 ---
 

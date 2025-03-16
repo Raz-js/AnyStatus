@@ -267,7 +267,7 @@ end;
 
 procedure TForm1.ghTheoClick(Sender: TObject);
 begin
-  ShellExecute(Handle, 'open', PChar('https://github.com/its-theo'), nil, nil, SW_SHOWNORMAL);
+  ShellExecute(Handle, 'open', PChar('https://codeberg.org/its-theo'), nil, nil, SW_SHOWNORMAL);
 end;
 
 procedure TForm1.imgGHClick(Sender: TObject);
@@ -300,6 +300,7 @@ begin
   end
   else
   begin
+  CloseProcessByTitle('AnyStatus | By github.com/raz-js');
   memPython.Clear;
   memPython.Lines.Add('import requests');
   memPython.Lines.Add('import sys, os');
